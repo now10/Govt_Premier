@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Lancer Portal | PREMIER-EXECUTIVE-EXCO</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .portfolio-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 102, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 204, 255, 0.1) 0%, transparent 50%);
+            animation: backgroundFloat 20s ease-in-out infinite alternate;
+        }
+        
+        .login-card {
+            width: 100%;
+            max-width: 440px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .brand-gradient {
+            background: linear-gradient(90deg, #00CCFF, #0066FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .login-subtitle {
+            color: #94a3b8;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .input-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 16px 16px 48px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #0066FF;
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .security-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .security-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .security-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #334155;
+            transition: all 0.3s ease;
+        }
+        
+        .security-dot.active {
+            background: #10B981;
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #0066FF 0%, #00CCFF 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.3);
+        }
+        
+        .portfolio-note {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 32px;
+            text-align: center;
+        }
+        
+        .portfolio-note h4 {
+            font-size: 14px;
+            color: #00CCFF;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .portfolio-note p {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Portfolio Identifier -->
+    <div class="portfolio-badge">
+        <i class="fas fa-code"></i>
+        PREMIER-EXECUTIVE-EXCO
+    </div>
+
+    <div class="login-container">
+        <div class="login-background"></div>
+        
+        <div class="login-card">
+            <div class="login-header">
+                <div class="brand">
+                    <i class="fas fa-crown"></i>
+                    <span class="brand-gradient">PREMIER LANCER</span>
+                </div>
+                <p class="login-subtitle">Executive Financial Portal</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" 
+                           class="form-input" 
+                           id="username"
+                           placeholder="Enter: monica_J1"
+                           required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" 
+                           class="form-input" 
+                           id="password"
+                           placeholder="Enter: user00571"
+                           required>
+                    <div class="security-indicator">
+                        <div class="security-dots">
+                            <div class="security-dot active"></div>
+                            <div class="security-dot active"></div>
+                            <div class="security-dot active"></div>
+                            <div class="security-dot"></div>
+                            <div class="security-dot"></div>
+                        </div>
+                        <span>Password strength: Strong</span>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-shield-alt input-icon"></i>
+                    <input type="text" 
+                           class="form-input" 
+                           id="totp"
+                           placeholder="Enter: 005711"
+                           required>
+                    <div class="security-indicator">
+                        <i class="fas fa-clock"></i>
+                        <span>Two-factor authentication code</span>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Access Portal
+                </button>
+            </form>
+            
+            <div class="portfolio-note">
+                <h4><i class="fas fa-laptop-code"></i> PREMIER-EXECUTIVE-EXCO</h4>
+                <p>This interface showcases professional financial dashboard design patterns, form validation, and state management. All data is simulated for according to its purposes.</p>
+                <p style="margin-top: 8px; font-size: 12px; color: #64748b;">
+                    <i class="fas fa-info-circle"></i>
+                    LIVE credentials: monica_J1 / user00571 / 005711
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class LoginManager {
+            constructor() {
+                this.form = document.getElementById('loginForm');
+                this.init();
+            }
+            
+            init() {
+                this.form.addEventListener('submit', this.handleSubmit.bind(this));
+                this.setupAnimations();
+                
+                // Initialize with correct credentials as placeholders
+                document.getElementById('username').value = 'monica_J1';
+                document.getElementById('password').value = 'user00571';
+                document.getElementById('totp').value = '005711';
+            }
+            
+            setupAnimations() {
+                const inputs = document.querySelectorAll('.form-input');
+                inputs.forEach(input => {
+                    input.addEventListener('focus', () => {
+                        input.parentElement.style.transform = 'translateY(-2px)';
+                    });
+                    
+                    input.addEventListener('blur', () => {
+                        input.parentElement.style.transform = 'translateY(0)';
+                    });
+                });
+            }
+            
+            handleSubmit(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const totp = document.getElementById('totp').value;
+                
+                const btn = this.form.querySelector('button');
+                const originalHTML = btn.innerHTML;
+                
+                // Show loading state
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
+                btn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    if (username === 'monica_J1' && password === 'user00571' && totp === '005711') {
+                        // Success
+                        btn.innerHTML = '<i class="fas fa-check"></i> Access Granted';
+                        btn.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+                        
+                        // Add success animation
+                        document.querySelector('.login-card').style.animation = 'successPulse 0.6s ease';
+                        
+                        // Save user session
+                        localStorage.setItem('plx_user_session', JSON.stringify({
+                            username: username,
+                            name: 'Bulleri Johnica',
+                            loginTime: new Date().toISOString(),
+                            authenticated: true
+                        }));
+                        
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 800);
+                    } else {
+                        // Error
+                        btn.innerHTML = '<i class="fas fa-times"></i> Invalid Credentials';
+                        btn.style.background = 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)';
+                        
+                        // Shake animation
+                        this.form.style.animation = 'shake 0.5s ease';
+                        setTimeout(() => {
+                            this.form.style.animation = '';
+                        }, 500);
+                        
+                        // Reset button
+                        setTimeout(() => {
+                            btn.innerHTML = originalHTML;
+                            btn.style.background = '';
+                            btn.disabled = false;
+                        }, 1500);
+                    }
+                }, 1200);
+            }
+        }
+        
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            window.loginManager = new LoginManager();
+            
+            // Add keyframe animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-10px); }
+                    75% { transform: translateX(10px); }
+                }
+                
+                @keyframes successPulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.02); }
+                }
+                
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+                
+                @keyframes slideUp {
+                    from { transform: translateY(40px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                
+                @keyframes backgroundFloat {
+                    0% { transform: translate(0, 0) scale(1); }
+                    100% { transform: translate(-10px, 10px) scale(1.05); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Check for existing session
+            const session = localStorage.getItem('plx_user_session');
+            if (session) {
+                const sessionData = JSON.parse(session);
+                // Auto-fill credentials if session exists
+                if (sessionData.username === 'monica_J1') {
+                    document.getElementById('username').value = 'monica_J1';
+                }
+            }
+            
+            // Portfolio console message
+            console.log('%c🔐 Premier Lancer Portal - PREMIER-EXECUTIVE-EXCO', 'font-size: 16px; font-weight: bold; color: #00CCFF;');
+            console.log('%c👤 Credentials: monica_J1 / user00571 / 005711', 'color: #94A3B8;');
+            console.log('%c📱 Professional financial dashboard simulation', 'color: #94A3B8;');
+        });
+    </script>
+</body>
+</html>
