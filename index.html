@@ -220,7 +220,7 @@
                     <input type="text" 
                            class="form-input" 
                            id="username"
-                           placeholder="Enter: monica_J1"
+                           placeholder="Enter: username"
                            required>
                 </div>
                 
@@ -229,7 +229,7 @@
                     <input type="password" 
                            class="form-input" 
                            id="password"
-                           placeholder="Enter: user00571"
+                           placeholder="Enter: password"
                            required>
                     <div class="security-indicator">
                         <div class="security-dots">
@@ -248,7 +248,7 @@
                     <input type="text" 
                            class="form-input" 
                            id="totp"
-                           placeholder="Enter: 005711"
+                           placeholder="Enter: 2fa_Code·Pin"
                            required>
                     <div class="security-indicator">
                         <i class="fas fa-clock"></i>
@@ -267,7 +267,7 @@
                 <p>This interface showcases professional financial dashboard design patterns, form validation, and state management. All data is simulated for according to its purposes.</p>
                 <p style="margin-top: 8px; font-size: 12px; color: #64748b;">
                     <i class="fas fa-info-circle"></i>
-                    LIVE credentials: monica_J1 / user00571 / 005711
+                    LIVE credentials: mon***** / user***** / pin_null - GET 
                 </p>
             </div>
         </div>
@@ -286,8 +286,8 @@
                 
                 // Initialize with correct credentials as placeholders
                 document.getElementById('username').value = 'monica_J1';
-                document.getElementById('password').value = 'user00571';
-                document.getElementById('totp').value = '005711';
+                document.getElementById('password').value = '';
+                document.getElementById('totp').value = '';
             }
             
             setupAnimations() {
@@ -401,7 +401,7 @@
                 const sessionData = JSON.parse(session);
                 // Auto-fill credentials if session exists
                 if (sessionData.username === 'monica_J1') {
-                    document.getElementById('username').value = 'monica_J1';
+                    document.getElementById('username').value = '';
                 }
             }
             
